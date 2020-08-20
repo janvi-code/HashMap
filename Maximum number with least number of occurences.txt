@@ -1,0 +1,35 @@
+import java.util.*;
+import java.lang.*;
+public class Main
+{
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		int n = sc.nextInt();
+		TreeMap<Integer,Integer> map = new TreeMap<>(Collections.reverseOrder());
+		for(int i=0;i<n;i++) {
+			int num = sc.nextInt();
+			if(map.containsKey(num))
+				map.put(num, map.get(num)+1);
+			else
+				map.put(num, 1);
+		}
+		int val = 0;
+		int element = 0;
+		int flag = 0;
+		for(Map.Entry<Integer, Integer> x : map.entrySet()) {
+		        if(flag == 0) {
+		        	val = x.getValue();
+		        	element = x.getKey();
+		        	flag = 1;
+		        }else {
+		        	if(x.getValue()>val) {
+		        		break;
+		        	}else {
+		        		val = x.getValue();
+		        		element = x.getKey();
+		        	}
+		        }
+			};
+			System.out.println(element);
+	}
+}
